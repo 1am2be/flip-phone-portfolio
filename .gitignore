@@ -1,0 +1,9 @@
+# 仓库根 = portfolio/，这里只放当前版本需要的文件
+
+# 废弃样式：index.html 引用次数为 0
+styles.css
+dist/styles.css
+
+# 系统文件
+.DS_Store
+Thumbs.db
