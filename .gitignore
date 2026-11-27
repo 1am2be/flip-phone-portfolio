@@ -7,3 +7,11 @@ dist/styles.css
 # 系统文件
 .DS_Store
 Thumbs.db
+
+# 新版运行时文件与本地密钥
+.pixel-me-data/
+.env
+.env.*
+__pycache__/
+*.py[cod]
+.venv/

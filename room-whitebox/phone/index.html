@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5eafb" />
+    <meta name="description" content="翻盖手机主题互动作品集" />
+    <title>Tianxin Li · 翻盖手机作品集</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23723589'/%3E%3Crect x='8' y='4' width='16' height='24' rx='4' fill='%23f7d9f0' stroke='%23f348aa' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='11' r='2.6' fill='%23f348aa'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles-v2.css?v=7" />
+    <link rel="stylesheet" href="room-phone.css?v=2" />
+  </head>
+  <body>
+    <div class="page-glow" aria-hidden="true"></div>
+
+    <section class="cover-screen" id="coverScreen" aria-label="开场动画：翻开翻盖手机，进入作品集">
+      <header class="cover-copy">
+        <p class="cover-eyebrow"><i></i> INCOMING CALL · PORTFOLIO</p>
+        <h1>Tianxin <em>Li</em></h1>
+        <p class="cover-sub">一通来自翻盖手机的来电</p>
+      </header>
+
+      <div class="flip-depth" aria-hidden="true">
+        <div class="flip-stage">
+          <div class="flip-phone" id="flipPhone">
+            <div class="flip-base"></div>
+            <div class="flip-hinge"></div>
+            <div class="flip-lid" id="flipLid">
+              <div class="lid-face lid-inner"><span class="screen-glow"></span></div>
+              <div class="lid-face lid-outer"><span class="outer-glint"></span></div>
+            </div>
+            <div class="flip-sparkles">
+              <span>✦</span><span>✧</span><span>♡</span><span>✦</span><span>⋆</span><span>✧</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-actions">
+        <button class="open-tab" id="openTab" type="button"><span>✦</span> 翻开手机 <span>✦</span></button>
+      </div>
+    </section>
+
+    <main class="portfolio-screen" id="portfolioScreen" inert>
+      <button class="replay-intro" id="closePhone" type="button" aria-label="盖上手机，返回封面">↩ 盖上手机</button>
+      <section class="portfolio-scene" aria-label="作品集手机与目录">
+        <div class="phone-depth">
+          <div class="open-phone-wrap" id="phoneWrap">
+            <img class="phone-body" src="assets/phone-open.png?v=3" alt="打开的紫色翻盖手机" />
+            <span class="phone-bottom" aria-hidden="true"></span>
+            <button class="phone-key key-1" type="button" data-section="0" aria-label="按 1 联系我"></button>
+            <button class="phone-key key-2" type="button" data-section="1" aria-label="按 2 查看工作经历"></button>
+            <button class="phone-key key-3" type="button" data-section="2" aria-label="按 3 查看内容营销作品"></button>
+            <button class="phone-key key-4" type="button" data-section="3" aria-label="按 4 查看 AI 应用案例"></button>
+            <button class="phone-key key-5" type="button" data-section="4" aria-label="按 5 查看品牌传播策划案提案"></button>
+            <button class="phone-key key-6" type="button" data-section="5" aria-label="按 6 查看视觉设计作品"></button>
+          </div>
+        </div>
+
+        <aside class="guide-bubble" aria-label="作品集目录">
+          <nav class="guide-hotspots" aria-label="目录选项">
+            <button type="button" data-section="0">联系我请按 1</button>
+            <button type="button" data-section="1">查看<strong>工作经历</strong>请按 2</button>
+            <button type="button" data-section="2">查看<strong>内容营销</strong>作品请按 3</button>
+            <button type="button" data-section="3">查看<strong>AI应用案例</strong>请按 4</button>
+            <button type="button" data-section="4">查看<strong>品牌传播策划案</strong>请按 5</button>
+            <button type="button" data-section="5">查看<strong>视觉设计作品</strong>请按 6</button>
+          </nav>
+        </aside>
+      </section>
+    </main>
+
+    <dialog class="content-dialog" id="contentDialog" aria-labelledby="sectionTitle">
+      <div class="dialog-window">
+        <img src="assets/dialog.png" alt="像素风文本框" />
+        <button class="dialog-close" id="dialogClose" type="button" aria-label="关闭弹窗">关闭</button>
+        <section class="dialog-content-panel">
+          <header class="dialog-heading">
+            <div>
+              <p class="dial-status" id="dialStatus">CONNECTED · KEY 01</p>
+              <h1 id="sectionTitle">联系我</h1>
+            </div>
+            <p class="scroll-hint" id="scrollHint" hidden>SCROLL ↓</p>
+          </header>
+
+          <div class="dialog-scroll" id="dialogScroll" tabindex="0">
+            <div class="content-slot" id="genericContent">
+              <span>CONTENT AREA</span>
+              <p>该板块的具体内容将在下一阶段添加</p>
+            </div>
+
+            <article class="portfolio-content contact-content" id="contactContent" hidden>
+              <section class="contact-card">
+                <p class="contact-hello">HiHi！</p>
+                <h2>我是李天馨，花名奥比鹅</h2>
+                <p class="contact-role">来自深圳大学广告学专业的27届毕业生</p>
+                <div class="contact-copy">
+                  <p>我关注内容如何连接用户与商业，也喜欢探索创意落地的不同可能。</p>
+                  <p>这份作品集记录了我在平台方、品牌方、内容服务方、学生等不同身份或视角下的实践，从业务洞察、内容策略到传播创意，也包括我利用 AI 优化工作流程、开发兴趣产品的尝试。</p>
+                </div>
+                <div class="contact-methods">
+                  <a href="mailto:1945336406@qq.com"><span>📫</span><b>1945336406@qq.com</b></a>
+                  <div><span>WeChat</span><b>zzzzzyyux</b></div>
+                </div>
+              </section>
+            </article>
+
+            <article class="portfolio-content experience-content" id="experienceContent" hidden>
+              <section class="experience-intro">
+                <p>About my experience</p>
+                <h2>从业务分析到内容策略，从创意构思到项目落地</h2>
+                <span>透过不同视角关注内容与增长</span>
+              </section>
+
+              <div class="experience-list">
+                <article class="experience-card">
+                  <img src="assets/experience/kuaishou.png" alt="快手电商" loading="lazy" />
+                  <div>
+                    <h3>快手电商·商业化行业运营</h3>
+                    <h4>从信息中，找到业务判断</h4>
+                    <p>围绕电商平台的品效政策与行业研究，分析业务问题、提出策略建议，搭建AI Workflow 提升行业信息筛选效率。</p>
+                  </div>
+                </article>
+                <article class="experience-card">
+                  <img src="assets/experience/yuanbao-ai.png" alt="腾讯元宝 AI" loading="lazy" />
+                  <div>
+                    <h3>腾讯·元宝AI·增长达人营销</h3>
+                    <h4>让好内容，成为健康增长的入口</h4>
+                    <p>围绕AI产品的用户拉新目标，参与日常内容策略及春节节点KOL达人传播策略，探索产品的使用场景。</p>
+                  </div>
+                </article>
+                <article class="experience-card">
+                  <img src="assets/experience/laifen.png" alt="徕芬" loading="lazy" />
+                  <div>
+                    <h3>徕芬·内容营销</h3>
+                    <h4>将产品卖点，转换为消费者解决问题的表达</h4>
+                    <p>围绕品牌内容传播需求，参与内容策略规划与创意构思，让产品价值转化为更贴近用户的内容表达。</p>
+                  </div>
+                </article>
+                <article class="experience-card">
+                  <img src="assets/experience/shine-power.png" alt="发光力量" loading="lazy" />
+                  <div>
+                    <h3>发光力量MCN·品牌推广</h3>
+                    <h4>品牌Brief到用户端的内容供给</h4>
+                    <p>面向品牌客户，参与需求沟通、内容创作与项目执行，理解创意在商业需求与实际交付之间的平衡。</p>
+                  </div>
+                </article>
+              </div>
+
+              <section class="project-experience">
+                <div class="project-heading">
+                  <p>More Experiences</p>
+                  <h2>活动的全流程策划与落地</h2>
+                </div>
+                <p class="project-meta">协办项目｜活动导演·创意策划·公关传播·活动落地</p>
+                <div class="project-grid">
+                  <figure>
+                    <img src="assets/experience/shenzhen-hosts.jpg" alt="深圳十佳网络主播评选" loading="lazy" />
+                    <figcaption>深圳十佳网络主播评选</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="assets/experience/szu-graduation.jpg" alt="深大广告系毕业设计答辩仪式" loading="lazy" />
+                    <figcaption>深大广告系毕业设计答辩仪式</figcaption>
+                  </figure>
+                </div>
+              </section>
+            </article>
+
+            <article class="marketing-content" id="marketingContent" hidden>
+              <section class="case-card case-card--hero">
+                <div class="case-label"><span>01</span> 元宝 AI · 春节拉新</div>
+                <h2>把产品能力放进真实过年场景</h2>
+                <p class="case-lead">从三项春节玩法承担的不同作用出发，设计达人类型与产品植入表达，让产品自然融入场景。</p>
+
+                <div class="strategy-list">
+                  <article>
+                    <b>分红包激励玩法</b>
+                    <span>主会场</span>
+                    <p>在同亲戚吹牛中传递十亿红包信息</p>
+                  </article>
+                  <article>
+                    <b>社交玩法</b>
+                    <span>元宝派</span>
+                    <p>情侣异地过年互动</p>
+                  </article>
+                  <article>
+                    <b>低门槛任务</b>
+                    <span>创作模板</span>
+                    <p>宠物写真与同款模板梗图融入生活剧情，展现多模态能力</p>
+                  </article>
+                </div>
+
+                <div class="work-gallery work-gallery--four">
+                  <figure><img src="assets/content-marketing/yuanbao-main.jpg" alt="元宝 AI 春节主会场内容案例" loading="lazy" /><figcaption>主会场</figcaption></figure>
+                  <figure><img src="assets/content-marketing/yuanbao-pair.jpg" alt="元宝派异地情侣互动内容案例" loading="lazy" /><figcaption>元宝派</figcaption></figure>
+                  <figure><img src="assets/content-marketing/yuanbao-template-1.jpg" alt="元宝 AI 宠物写真创作模板案例" loading="lazy" /><figcaption>创作模板*梗图</figcaption></figure>
+                  <figure><img src="assets/content-marketing/yuanbao-template-2.jpg" alt="元宝 AI 模板梗图内容案例" loading="lazy" /><figcaption>创作模板*评论区分享同款</figcaption></figure>
+                </div>
+              </section>
+
+              <section class="case-card">
+                <div class="case-label"><span>02</span> 元宝 AI · 日常拉新</div>
+                <h2>探索小红书高转化高留存场景</h2>
+                <div class="metric-strip">
+                  <span>优质选题方向</span>
+                  <strong>AI 录音笔 × 个人成长方向</strong>
+                </div>
+                <p class="case-lead case-lead--topic">以个人成长*元宝AI录音笔方向为例，从“记录自己”“表达力练习”等热点话题切入，选题模板产出多篇站内万赞笔记。</p>
+                <img class="topic-banner" src="assets/content-marketing/yuanbao-recorder.png" alt="AI 录音笔与个人成长选题方向案例" loading="lazy" />
+                <div class="work-gallery work-gallery--three">
+                  <figure><img src="assets/content-marketing/yuanbao-daily-1.jpg" alt="元宝 AI 日常拉新案例一" loading="lazy" /></figure>
+                  <figure><img src="assets/content-marketing/yuanbao-daily-2.jpg" alt="元宝 AI 日常拉新案例二" loading="lazy" /></figure>
+                  <figure><img src="assets/content-marketing/yuanbao-daily-3.jpg" alt="元宝 AI 日常拉新案例三" loading="lazy" /></figure>
+                </div>
+              </section>
+
+              <section class="case-card">
+                <div class="case-label"><span>03</span> 灵光 AI · 饭圈种草</div>
+                <h2>UGC内容创作 总结经验为细分方向模板</h2>
+                <p class="case-lead">将AI追踪功能深度融入零基础账号社媒内容，一期合作创作19篇社媒内容，千赞率16%，并在创作者社群分享“饭圈反黑”方向模板。</p>
+                <div class="result-grid">
+                  <div><strong>100万+</strong><span>自然阅读总量</span></div>
+                  <div><strong>3篇</strong><span>内容互动破百</span></div>
+                  <div><strong>8篇</strong><span>内容互动破百</span></div>
+                </div>
+                <div class="work-gallery work-gallery--two">
+                  <figure><img src="assets/content-marketing/lingguang-1.jpg" alt="灵光 AI 饭圈种草内容案例一" loading="lazy" /></figure>
+                  <figure><img src="assets/content-marketing/lingguang-2.jpg" alt="灵光 AI 饭圈种草内容案例二" loading="lazy" /></figure>
+                </div>
+              </section>
+
+              <section class="case-card">
+                <div class="case-label"><span>04</span> 飞亚达 · 明星话题营销</div>
+                <h2>用主题词聚拢关注，让讨论持续发酵</h2>
+                <div class="topic-flow" aria-label="明星话题营销策略流程">
+                  <div><b>冲榜主题词</b><span>集中曝光</span></div>
+                  <i>→</i>
+                  <div><b>发酵话题</b><span>延展讨论</span></div>
+                </div>
+                <p class="case-lead">主题词冲上抖音文娱热搜榜TOP10：#娱乐圈品牌最长情代言人；发酵话题 #飞亚达是高圆圆大粉吧、#高圆圆专属于她的告白词 等植入品牌内容。</p>
+                <div class="work-gallery work-gallery--fiyta">
+                  <figure><img src="assets/content-marketing/fiyta-gaoyuanyuan.jpg" alt="飞亚达高圆圆明星话题内容案例" loading="lazy" /></figure>
+                  <figure><img src="assets/content-marketing/fiyta-topic.png" alt="飞亚达明星话题营销数据与内容截图" loading="lazy" /></figure>
+                </div>
+              </section>
+
+              <p class="content-end">END OF CONTENT · 03</p>
+            </article>
+
+            <article class="portfolio-content ai-content" id="aiContent" hidden>
+              <section class="showcase-card showcase-card--life">
+                <div class="showcase-kicker">AI IN LIFE</div>
+                <div class="showcase-title-row">
+                  <div>
+                    <h2>Idol Dance</h2>
+                  </div>
+                  <a class="demo-link" href="https://idol-dance.app.workbuddy.host/?sharecode=3D6NQGR3VW#/" target="_blank" rel="noreferrer">产品demo ↗</a>
+                </div>
+                <p class="showcase-copy">聚焦 K-pop 舞蹈爱好者难以开始、容易遗忘、缺少成就感的练习困扰，借助 AI 开发兴趣工具Demo，探索更有反馈感的舞蹈学习体验。</p>
+                <div class="phone-shot-grid">
+                  <figure><img src="assets/ai-cases/idol-dance-list.jpg" alt="Idol Dance 我的舞单产品界面" loading="lazy" /></figure>
+                  <figure><img src="assets/ai-cases/idol-dance-review.jpg" alt="Idol Dance 今日复习产品界面" loading="lazy" /></figure>
+                </div>
+              </section>
+
+              <section class="showcase-card showcase-card--work">
+                <div class="showcase-kicker">AI IN WORK / 01</div>
+                <h2>AI Workflow in 快手</h2>
+                <p class="showcase-copy">面对架构调整带来的服务行业数、品类数翻倍问题，将整理流程升级为Agent 驱动的AI Workflow，支持六大行业竞对分析、爆品洞察与行业洞察信息更新。</p>
+                <div class="workflow-compare">
+                  <div><span>BEFORE · 人工串联</span><b>人工取数 → AI文本分析 → 手动整理</b></div>
+                  <div><span>AFTER · 流程协同</span><b>Agent取数 → 规范输出结构 → 人工复查</b></div>
+                </div>
+              </section>
+
+              <section class="showcase-card showcase-card--work">
+                <div class="showcase-kicker">AI IN WORK / 02</div>
+                <h2>Analysis Skill in 快手</h2>
+                <p class="showcase-copy">将取数、分层分析与报告生成沉淀为Skill。</p>
+                <p class="showcase-copy">从大盘表现深入不同体量客户，监控客户参与主动性与实际效果，定位异常并反馈销售。</p>
+                <div class="workflow-steps" aria-label="分析流程">
+                  <span>整体监控</span><i>→</i><span>分层诊断</span><i>→</i><span>异常识别</span><i>→</i><span>反馈业务</span>
+                </div>
+              </section>
+            </article>
+
+            <article class="portfolio-content brand-content" id="brandContent" hidden>
+              <section class="showcase-card brand-case">
+                <h2>三九胃泰养胃舒《知冷知暖才知己》</h2>
+                <p class="award-line">2025 第17届全国大学生广告艺术大赛 · 策划案国家级三等奖</p>
+                <div class="insight-stack">
+                  <p><b>OBSERVATION</b><span>胃对食物的冷暖十分敏感，而我们却常常忽略它发出的信号。</span></p>
+                  <p><b>INSIGHT</b><span>忙着体察社会冷暖的年轻人，却容易在高压生活中忽略自己的身体需求。</span></p>
+                  <p><b>BIG IDEA</b><span>懂得人情冷暖，也别忘了照顾自己的冷暖。</span></p>
+                </div>
+                <div class="proposal-gallery">
+                  <figure><img src="assets/brand-planning/sanjiu-strategy.png" alt="三九胃泰策划案策略概览" loading="lazy" /></figure>
+                  <figure><img src="assets/brand-planning/sanjiu-audience.png" alt="三九胃泰策划案人群洞察" loading="lazy" /></figure>
+                  <figure><img src="assets/brand-planning/sanjiu-key-visual.png" alt="三九胃泰知冷知暖才知己主视觉" loading="lazy" /></figure>
+                </div>
+              </section>
+
+              <section class="showcase-card brand-case">
+                <h2>果乐果香《快乐果然简单》</h2>
+                <p class="award-line">2025 粤港澳大广节 · 品牌传播策划案</p>
+                <div class="insight-stack">
+                  <p><b>OBSERVATION</b><span>长大后的快乐似乎难以简单获取，常常被日常琐事与精神内耗层层消耗。</span></p>
+                  <p><b>INSIGHT</b><span>对Z世代而言，童年的快乐记忆也许正是重新拾起简单快乐的入口。</span></p>
+                  <p><b>BIG IDEA</b><span>以熟悉的童年味道唤醒简单快乐，用减糖升级与新口味回应当下的消费需求。</span></p>
+                </div>
+                <div class="proposal-gallery">
+                  <figure><img src="assets/brand-planning/guole-key-visual.png" alt="果乐果香快乐果然简单主视觉" loading="lazy" /></figure>
+                  <figure><img src="assets/brand-planning/guole-strategy.png" alt="果乐果香品牌传播策略概览" loading="lazy" /></figure>
+                  <figure><img src="assets/brand-planning/guole-audience.png" alt="果乐果香消费者洞察" loading="lazy" /></figure>
+                </div>
+              </section>
+            </article>
+
+            <article class="portfolio-content visual-content" id="visualContent" hidden>
+              <section class="showcase-card visual-section">
+                <h2>Magazine Design</h2>
+                <p class="visual-cn">杂志设计</p>
+                <div class="magazine-grid">
+                  <figure><img src="assets/visual-design/magazine-1.png" alt="杂志设计作品一" loading="lazy" /></figure>
+                  <figure><img src="assets/visual-design/magazine-2.png" alt="杂志设计作品二" loading="lazy" /></figure>
+                  <figure><img src="assets/visual-design/magazine-3.png" alt="杂志设计作品三" loading="lazy" /></figure>
+                  <figure><img src="assets/visual-design/magazine-4.png" alt="杂志设计作品四" loading="lazy" /></figure>
+                  <figure><img src="assets/visual-design/magazine-5.png" alt="杂志设计作品五" loading="lazy" /></figure>
+                  <figure><img src="assets/visual-design/magazine-6.png" alt="杂志设计作品六" loading="lazy" /></figure>
+                </div>
+              </section>
+
+              <section class="showcase-card visual-section">
+                <h2>WeChat Editorial</h2>
+                <p class="visual-cn">推文设计</p>
+                <div class="wechat-grid">
+                  <figure><img src="assets/visual-design/wechat-1.jpg" alt="公众号推文设计作品一" loading="lazy" /></figure>
+                  <figure><img src="assets/visual-design/wechat-2.jpg" alt="公众号推文设计作品二" loading="lazy" /></figure>
+                </div>
+              </section>
+            </article>
+          </div>
+        </section>
+        <div class="dialog-switcher">
+          <button id="prevSection" type="button" aria-label="上一个板块">←</button>
+          <span id="sectionCount">01 / 06</span>
+          <button id="nextSection" type="button" aria-label="下一个板块">→</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="script.js?v=6"></script>
+    <script src="sparkle-fx.js?v=1"></script>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="00 年代的互动书桌与翻盖手机作品集。" />
+  <meta name="theme-color" content="#1b0e13" />
+  <title>00s Room · 一通来自 00 年代的来电</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="./room.css" />
+  <link rel="stylesheet" href="./desk-panels.css" />
+  <link rel="stylesheet" href="./pixel-me.css" />
+  <link rel="preload" as="image" href="./assets/room-front.jpg" fetchpriority="high" />
+</head>
+<body>
+  <main class="room" id="stage" aria-label="00 年代房间">
+    <canvas id="room" aria-hidden="true"></canvas>
+    <button class="room-device" type="button" data-device="phone" aria-label="接来电，翻开手机作品集" disabled></button>
+    <button class="room-device" type="button" data-device="computer" aria-label="PIXEL ME 显示器" disabled></button>
+    <button class="room-device" type="button" data-device="notebook" aria-label="Resume 线圈本" disabled></button>
+    <button class="room-device" type="button" data-device="camera" aria-label="银色 CCD 相机" disabled></button>
+    <p class="room-status" id="notice" role="status">正在加载房间…</p>
+  </main>
+  <dialog class="phone-panel" id="phonePanel" aria-label="翻盖手机作品集">
+    <div class="phone-error" id="phoneError" hidden>
+      <p role="status">手机加载失败。</p>
+      <button type="button" id="phoneErrorClose">盖上手机</button>
+    </div>
+  </dialog>
+  <dialog class="desk-panel resume-panel" id="resumePanel" aria-labelledby="resumeTitle">
+    <header class="desk-panel-header">
+      <h2 id="resumeTitle">简历</h2>
+      <button type="button" data-close>关闭</button>
+    </header>
+    <div class="resume-book">
+      <div class="resume-scroll" tabindex="0" aria-label="简历正文">
+        <img class="resume-page" alt="李天馨的简历，完整文字可使用下方 PDF 阅读" />
+      </div>
+      <div class="resume-cover" aria-hidden="true"></div>
+    </div>
+    <div class="resume-actions">
+      <button type="button" data-zoom="out" aria-label="缩小简历">−</button>
+      <button type="button" data-zoom="reset" aria-label="恢复适合窗口">适合窗口</button>
+      <button type="button" data-zoom="in" aria-label="放大简历">+</button>
+      <a href="./assets/resume.pdf" download="李天馨-简历.pdf">下载 PDF</a>
+    </div>
+  </dialog>
+  <dialog class="desk-panel camera-panel" id="cameraPanel" aria-labelledby="cameraTitle">
+    <header class="desk-panel-header camera-header">
+      <p id="cameraTitle">看看CCD拍了什么吧~</p>
+      <button type="button" data-close>关闭</button>
+    </header>
+    <div class="camera-shell">
+      <div class="camera-trim" aria-hidden="true">
+        <span class="camera-viewfinder"></span>
+        <span class="camera-rocker"></span>
+      </div>
+      <div class="camera-bezel">
+        <button type="button" class="camera-screen" aria-label="放大照片" aria-pressed="false">
+          <img class="camera-photo" draggable="false" alt="" />
+        </button>
+      </div>
+      <div class="camera-controls" role="group" aria-label="CCD 机身方向键">
+        <span class="camera-grille" aria-hidden="true"></span>
+        <div class="camera-dial">
+          <button type="button" data-photo-step="-1" aria-label="CCD 左键，上一张">◀</button>
+          <span class="camera-dial-center" aria-hidden="true"></span>
+          <button type="button" data-photo-step="1" aria-label="CCD 右键，下一张">▶</button>
+        </div>
+      </div>
+    </div>
+    <div class="camera-actions">
+      <button type="button" data-photo-step="-1">上一张</button>
+      <output aria-live="polite" class="camera-count"></output>
+      <button type="button" data-photo-step="1">下一张</button>
+    </div>
+    <nav class="camera-thumbs" aria-label="照片缩略图"></nav>
+  </dialog>
+  <dialog class="desk-panel pixel-me" id="pixelMePanel" aria-labelledby="pixelMeTitle">
+    <header class="pixel-me-titlebar">
+      <span id="pixelMeTitle">PIXEL ME</span>
+      <button type="button" data-pixel-close aria-label="关闭 PIXEL ME">×</button>
+    </header>
+    <div class="pixel-me-scroll">
+      <div class="pixel-me-banner">
+        <span class="pixel-cloud pixel-cloud--left" aria-hidden="true"></span>
+        <span class="pixel-cloud pixel-cloud--right" aria-hidden="true"></span>
+        <div class="pixel-me-logo" aria-hidden="true">PIXEL <i>ME</i></div>
+        <nav class="pixel-me-nav" aria-label="PIXEL ME 功能">
+          <button type="button" data-pixel-view="create" aria-controls="pixelCreate" aria-pressed="true">
+            <span aria-hidden="true" class="pixel-me-nav-icon">✦</span> CREATE AVATAR
+          </button>
+          <button type="button" data-pixel-view="wall" aria-controls="pixelWall" aria-pressed="false">
+            <span aria-hidden="true" class="pixel-me-nav-icon pixel-me-nav-icon--photo"></span> PHOTO WALL
+          </button>
+        </nav>
+      </div>
+      <section class="pixel-me-create" id="pixelCreate" aria-label="创建像素小人">
+        <div class="pixel-me-card">
+          <h2>你的照片</h2>
+          <button type="button" class="pixel-me-frame pixel-me-frame--photo" data-pixel-pick aria-label="选择要预览的照片">
+            <span class="pixel-me-placeholder" data-photo-placeholder aria-hidden="true">＋</span>
+            <img class="pixel-me-photo" data-pixel-photo alt="所选照片预览" hidden />
+          </button>
+          <input type="file" id="pixelPhotoFile" accept="image/jpeg,image/png,image/webp" hidden />
+          <label class="pixel-me-field" for="pixelDescription">
+            <span>外形和穿搭 <small>选填</small></span>
+            <textarea id="pixelDescription" rows="2" maxlength="140" placeholder="例如：保留斜刘海，穿浅蓝牛仔裤"></textarea>
+          </label>
+          <div class="pixel-me-actions">
+            <button type="button" data-pixel-pick>选择照片</button>
+            <button type="button" data-pixel-generate class="pixel-me-primary" disabled>生成小人</button>
+            <button type="button" data-pixel-demo class="pixel-me-primary" hidden>体验样图</button>
+          </div>
+          <p class="pixel-me-note" data-pixel-photo-status role="status">JPG、PNG 或 WebP。请选择一张自己的照片。</p>
+          <p class="pixel-me-note pixel-me-privacy">
+            <span data-pixel-privacy>点击生成后，照片会交给图像服务处理。本站只在你确认上墙后保存小人和昵称。</span>
+            <a data-pixel-data href="https://developers.openai.com/api/docs/guides/your-data" target="_blank" rel="noopener noreferrer" hidden>OpenAI 数据说明</a>
+          </p>
+        </div>
+        <div class="pixel-me-card" data-pixel-result>
+          <h2>像素小人</h2>
+          <div class="pixel-me-frame pixel-me-frame--avatar">
+            <img class="pixel-me-avatar" data-pixel-avatar src="./assets/pixel-me-sample.png" alt="长直发、斜刘海和玫粉上衣的像素小人样图" width="192" height="240" loading="lazy" />
+          </div>
+          <p class="pixel-me-note" data-pixel-result-status role="status">画风示例。选择照片可以生成你自己的小人。</p>
+          <div class="pixel-me-actions" data-pixel-result-actions hidden>
+            <a data-pixel-download download="pixel-me.png">下载 PNG</a>
+            <button type="button" data-pixel-publish class="pixel-me-primary">加入合照</button>
+          </div>
+          <form class="pixel-me-confirm" data-pixel-confirm hidden>
+            <div class="pixel-me-post-preview">
+              <img data-pixel-post-avatar width="192" height="240" alt="上墙小人预览" />
+              <span data-pixel-post-name hidden></span>
+            </div>
+            <label class="pixel-me-field" for="pixelNickname">
+              <span>上墙昵称 <small>选填</small></span>
+              <input id="pixelNickname" type="text" maxlength="20" placeholder="留空则只显示小人" autocomplete="off" />
+            </label>
+            <p data-pixel-post-note>确认后，任何访客都能看到这个小人和你填写的昵称。</p>
+            <p data-pixel-post-status role="status" hidden></p>
+            <div class="pixel-me-actions">
+              <button type="button" data-pixel-cancel>取消</button>
+              <button type="submit" data-pixel-confirm-add class="pixel-me-primary">确认加入</button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section class="pixel-me-wall" id="pixelWall" aria-labelledby="pixelWallTitle" hidden>
+        <div class="pixel-me-wall-heading">
+          <h2 id="pixelWallTitle">像素合照</h2>
+          <p class="pixel-me-note" data-pixel-wall-status role="status">正在读取合照…</p>
+        </div>
+        <ul class="pixel-me-group" aria-label="合照中的像素小人" data-pixel-group></ul>
+        <div class="pixel-me-actions pixel-me-wall-actions">
+          <button type="button" data-pixel-wall-more hidden>查看更多</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
+  <script type="module" src="./room.js"></script>
+</body>
+</html>
